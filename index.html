@@ -36,7 +36,7 @@
                             <button type="button" class="btn btn-danger rounded-pill mt-4" onclick="gPassword()">Generate Password</button>
                         </div>
                         <div class="col-md-6 text-center">
-                            <button type="button" class="btn btn-secondary rounded-pill mt-4">Copy to Clipboard</button>
+                            <button type="button" class="btn btn-secondary rounded-pill mt-4" onclick="copyToClip()">Copy to Clipboard</button>
                         </div>
                     </div>
                 </div>
@@ -56,6 +56,8 @@
 
     <script>
 
+        var generatedPassword = ""
+
         function gPassword(){
 
             var pLength = prompt("How long do you want your password to be?\nChoose a number from 8 to 128.");
@@ -64,8 +66,7 @@
             var lowercase = confirm("Do you need lowercase characters?\n\nClick 'Cancel' for NO\nClick 'OK' for YES");
             var uppercase = confirm("Do you need uppercase characters?\n\nClick 'Cancel' for NO\nClick 'OK' for YES");
             
-            let characterSet = ""
-            let generatedPassword = ""
+            let characterSet = "";
 
             if (special == true){
                 characterSet = characterSet + "!@#$%^&*()"
@@ -84,10 +85,20 @@
                 generatedPassword += characterSet.charAt(Math.floor(Math.random() * characterSet.length));
             }
 
-            console.log(generatedPassword);
             document.getElementById("displayPassword").value = generatedPassword;
-
         }
+
+        function copyToClip(){
+            var copyText = document.getElementById("displayPassword");
+
+            /* Select the text field */
+            copyText.select();
+            copyText.setSelectionRange(0, 99999); /*For mobile devices*/
+
+            /* Copy the text inside the text field */
+            document.execCommand("copy");
+        }
+
     
     </script>
 
