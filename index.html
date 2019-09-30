@@ -7,7 +7,7 @@
     <title>Password Generator</title>
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="styles.css">
+    <link rel="stylesheet" type="text/css" href="style.css">
 </head>
 
 
@@ -23,17 +23,17 @@
         <div class="row">
             <div class="col-md-2"></div>
             <div class="col-md-8 border border-light bg-white p-5">
+
                 <h2 class="border-bottom border-secondary pb-4">Generate a Password</h2>
+
                 <div class="generaredPassword rounded my-3">
                     <p>Your Secure Password</p>
-                    <div id="generatedPassword">
-                        <p class="mb-0"><!--FUNCTION OUTPUT--></p>
-                    </div>
+                    <textarea class="form-control text-center border-0" type="text" rows="3" id="displayPassword"></textarea>
                 </div> 
                 <div class="border-top border-secondary mt-2">
                     <div class="row">
                         <div class="col-md-6 text-center">
-                            <button type="button" class="btn btn-danger rounded-pill mt-4">Generate Password</button>
+                            <button type="button" class="btn btn-danger rounded-pill mt-4" onclick="gPassword()">Generate Password</button>
                         </div>
                         <div class="col-md-6 text-center">
                             <button type="button" class="btn btn-secondary rounded-pill mt-4">Copy to Clipboard</button>
@@ -46,12 +46,50 @@
         </div>
 
     </div>
+    
+    <footer class="fixed-bottom">
+        <div class="container">
+            <p class="text-secondary text-center my-4">Copyright &copy; Kingsley Ramos</p>
+        </div>
+    </footer>
+    </Body>
 
+    <script>
 
+        function gPassword(){
+
+            var pLength = prompt("How long do you want your password to be?\nChoose a number from 8 to 128.");
+            var special = confirm("Do you need special characters?\n\nClick 'Cancel' for NO\nClick 'OK' for YES");
+            var numeric = confirm("Do you need numeric characters?\n\nClick 'Cancel' for NO\nClick 'OK' for YES");
+            var lowercase = confirm("Do you need lowercase characters?\n\nClick 'Cancel' for NO\nClick 'OK' for YES");
+            var uppercase = confirm("Do you need uppercase characters?\n\nClick 'Cancel' for NO\nClick 'OK' for YES");
+            
+            let characterSet = ""
+            let generatedPassword = ""
+
+            if (special == true){
+                characterSet = characterSet + "!@#$%^&*()"
+            }
+            if (numeric == true){
+                characterSet = characterSet + "1234567890"
+            }
+            if (lowercase == true){
+                characterSet = characterSet + "qwertyuiopasdfghjklzxcvbnm"
+            }
+            if (uppercase == true){
+                characterSet = characterSet + "QWERTYUIOPASDFGHJKLZXCVBNM"
+            }
+
+            for (var i = 0; i < parseInt(pLength); ++i) {
+                generatedPassword += characterSet.charAt(Math.floor(Math.random() * characterSet.length));
+            }
+
+            console.log(generatedPassword);
+            document.getElementById("displayPassword").value = generatedPassword;
+
+        }
+    
+    </script>
 
 </body>
-
-
-
-
 </html>
