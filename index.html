@@ -59,8 +59,10 @@
 
         function gPassword(){
 
+            // Create global variable of the length of the password
             var pLength
 
+            // Will check if user inputs a number from 8 to 128
             do{
                 pLength = prompt("How long do you want your password to be?\nChoose a number from 8 to 128.");
                 if (pLength < 8 || pLength > 128){
@@ -68,20 +70,15 @@
                 }
             } while (pLength < 8 || pLength > 128)
             
-
+            // Prompts users of password criteria choices
             var special = confirm("Do you need special characters?\n\nClick 'Cancel' for NO\nClick 'OK' for YES");
             var numeric = confirm("Do you need numeric characters?\n\nClick 'Cancel' for NO\nClick 'OK' for YES");
             var lowercase = confirm("Do you need lowercase characters?\n\nClick 'Cancel' for NO\nClick 'OK' for YES");
             var uppercase = confirm("Do you need uppercase characters?\n\nClick 'Cancel' for NO\nClick 'OK' for YES");
             
+            // Initializes character set to be used to generate password from
             var characterSet = "";
 
-            var specialSet = "!@#$%^&*()"
-            var numericSet =  "1234567890"
-            var lowercaseSet = "qwertyuiopasdfghjklzxcvbnm"
-            var uppercaseSet = "QWERTYUIOPASDFGHJKLZXCVBNM"
-            var passwordCheckrarr = [];
-            var passwordCheck = [];
 
             if (special == true){
                 characterSet = characterSet + "!@#$%^&*()!@#$%^&*()!@#$%^"
@@ -96,20 +93,29 @@
                 characterSet = characterSet + "QWERTYUIOPASDFGHJKLZXCVBNM"
             }
 
+            // Initializes character sets to be compared against to within the checks
+            var specialSet = "!@#$%^&*()"
+            var numericSet =  "1234567890"
+            var lowercaseSet = "qwertyuiopasdfghjklzxcvbnm"
+            var uppercaseSet = "QWERTYUIOPASDFGHJKLZXCVBNM"
+            var passwordCheckarr = [];
+            var passwordCheck = [];
 
-
+            
             do{
-
+                // Clears all Check arrays and generated password
                 passwordCheckarr = [];
                 passwordCheck = [];
                 generatedPassword = '';
 
+                // generates
                 for (var i = 0; i < parseInt(pLength); ++i) {
                     generatedPassword += characterSet.charAt(Math.floor(Math.random() * characterSet.length));
                 }
 
                 console.log(generatedPassword);
                 
+                // Checks every character in the generated password if it contains at least 1 special character
                 if(special == true){
                     for(let gpwi = 0; gpwi < pLength; gpwi++){
                         for(let seti = 0; seti < specialSet.length; seti++){
@@ -118,13 +124,14 @@
                             }
                         }
                     }
+                    if(passwordCheckarr.includes("true") == true){
+                        passwordCheck.push("true");
+                    }
+                    else{
+                        passwordCheck.push("false");
+                    }
                 }
-                if(passwordCheckarr.includes("true") == true){
-                passwordCheck.push("true");
-                }
-                else{
-                    passwordCheck.push("false");
-                }
+
                 
                 console.log(passwordCheck);
                 console.log("Special PasswordCheckarr: " + passwordCheckarr);
@@ -134,9 +141,9 @@
 
 
 
-
+                // Checks every character in the generated password if it contains at least 1 numeric character
                 if(numeric == true){
-                var passwordCheckarr = [];
+                    var passwordCheckarr = [];
                     for(let gpwi = 0; gpwi < pLength; gpwi++){
                         for(let seti = 0; seti < numericSet.length; seti++){
                             if(generatedPassword.charAt(gpwi) == numericSet.charAt(seti)){
@@ -144,12 +151,12 @@
                             }
                         }
                     }
-                }
-                if(passwordCheckarr.includes("true") == true){
-                passwordCheck.push("true");
-                }
-                else{
-                    passwordCheck.push("false");
+                    if(passwordCheckarr.includes("true") == true){
+                        passwordCheck.push("true");
+                    }
+                    else{
+                        passwordCheck.push("false");
+                    }
                 }
 
                 console.log(passwordCheck);
@@ -161,9 +168,9 @@
 
 
 
-
+                // Checks every character in the generated password if it contains at least 1 lowercase character
                 if(lowercase == true){
-                var passwordCheckarr = [];
+                    var passwordCheckarr = [];
                     for(let gpwi = 0; gpwi < pLength; gpwi++){
                         for(let seti = 0; seti < lowercaseSet.length; seti++){
                             if(generatedPassword.charAt(gpwi) == lowercaseSet.charAt(seti)){
@@ -171,12 +178,12 @@
                             }
                         }
                     }
-                }
-                if(passwordCheckarr.includes("true") == true){
-                passwordCheck.push("true");
-                }
-                else{
-                    passwordCheck.push("false");
+                    if(passwordCheckarr.includes("true") == true){
+                        passwordCheck.push("true");
+                    }
+                    else{
+                        passwordCheck.push("false");
+                    }
                 }
 
                 console.log(passwordCheck);
@@ -185,25 +192,23 @@
 
 
 
-
-
-
                 if(uppercase == true){
-                var passwordCheckarr = [];
+                    var passwordCheckarr = [];
                     for(let gpwi = 0; gpwi < pLength; gpwi++){
                         for(let seti = 0; seti < uppercaseSet.length; seti++){
-                            if(generatedPassword.charAt(gpwi) == uppercaseSet.charAt(seti)){
-                                passwordCheckarr.push("true");
+                            if(generatedPassword.charAt(gpwi) == uppercaseSet.charAt(seti)){ 
+                                passwordCheckarr.push("true"); 
                             }
                         }
                     }
+                    if(passwordCheckarr.includes("true") == true){
+                        passwordCheck.push("true");
+                    }
+                    else{
+                        passwordCheck.push("false");
+                    }
                 }
-                if(passwordCheckarr.includes("true") == true){
-                passwordCheck.push("true");
-                }
-                else{
-                    passwordCheck.push("false");
-                }
+
                 
                 console.log(passwordCheck);
                 console.log("uppercase PasswordCheckarr: " + passwordCheckarr);
@@ -211,6 +216,7 @@
 
                 
                 console.log(passwordCheck.includes("false"));
+
             }while(passwordCheck.includes("false") == true)
 
             document.getElementById("displayPassword").value = generatedPassword;
