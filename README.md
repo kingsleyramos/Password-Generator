@@ -19,11 +19,13 @@ I noticed that there are only ten characters within the special and the numeric 
 
 I created a way to check every single character for every criterial if there is at least 1 character within in the generated password in the character sets.
 
+
 ### Issue 2: How to get the generated password contain all criteria
 
 #### Solution: Keep generating a password
 
 I had to figure out a way for the password to dynamically change if it does not pass all the criteria. First I though to someone randomly change a single character within the generated password string but I thought what if it selected the character that it only had one character of a character set and is required for the criteria. I couldn't figure it out so I decided to just make it regenerate a password by using a do-while loop so it can run through the checks once and if any of the checks fail and it sees a false, it will loop back and regenerate the password and check the password again.
+
 
 ## Take Aways
 
