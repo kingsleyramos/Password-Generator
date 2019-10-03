@@ -8,6 +8,10 @@ p{
     color: #8c9096;
 }
 
+option, label, select{
+    color: #8c9096;
+}
+
 .btn{
     font-size: 20px!important;
 }
