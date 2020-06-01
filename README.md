@@ -1,4 +1,4 @@
-# Simple Password-Generator
+# Password-Generator
 
 This is application generates a password depending on user selected criteria: special characters, numeric characters, lowercase characters, uppercase characters, and character length. Only using HTML, CSS, and Javascript.
 
