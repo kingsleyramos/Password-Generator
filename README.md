@@ -24,6 +24,7 @@ I noticed that there are only ten characters within the special and the numeric 
 
 I created a way to check every single character for every criterial if there is at least 1 character within in the generated password in the character sets.
 
+
 ### Issue 2: How to get the generated password contain all criteria
 
 #### Solution: Keep generating a password
